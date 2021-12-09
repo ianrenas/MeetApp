@@ -8,7 +8,7 @@ class NumberOfEvents extends Component {
   updateEventNumber = (event) => {
     const value = event.target.value;
     this.setState({
-      numberOfEvents: value,
+      numberOfEvents: value
     });
   }
 
