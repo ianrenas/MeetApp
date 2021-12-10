@@ -30,7 +30,7 @@ export const checkToken = async (accessToken) => {
 const getToken = async (code) => {
   const encodeCode = encodeURIComponent(code);
   const { access_token: accessToken } = await fetch(
-    `https://fo3jdyed01.execute-api.us-east-1.amazonaws.com/dev/api/token`
+    `https://fo3jdyed01.execute-api.us-east-1.amazonaws.com/dev/api/token/{code}`
   )
     .then((res) => {
       return res.json();
@@ -58,7 +58,7 @@ export const getEvents = async () => {
   const token = await getAccessToken();
   if (token) {
     //removeQuery();
-    const url = `https://fo3jdyed01.execute-api.us-east-1.amazonaws.com/dev/api/get-events`;
+    const url = `https://fo3jdyed01.execute-api.us-east-1.amazonaws.com/dev/api/get-events/{access_token}`;
 
     const result = await axios.get(url);
     if (result.data) {
