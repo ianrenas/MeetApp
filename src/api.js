@@ -34,7 +34,7 @@ export const getEvents = async () => {
     return mockData;
   }
 
-  // when user is not online (is offline) show last viewd eevnts from local storage
+  // when user is not online (is offline) show last viewd events from local storage
   if (!navigator.onLine) {
     const data = localStorage.getItem("lastEvents");
     NProgress.done();

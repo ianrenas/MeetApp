@@ -1,6 +1,5 @@
-'use strict'
 const { google } = require("googleapis");
-const { identitytoolkit } = require("googleapis/build/src/apis/identitytoolkit");
+
 const OAuth2 = google.auth.OAuth2;
 const calendar = google.calendar("v3");
 
@@ -48,8 +47,7 @@ module.exports.getAuthURL = async () => {
   return {
     statusCode: 200,
     headers: {
-      "Access-Control-Allow-Origin": "*",
-      'Access-Control-Allow-Credentials': 'true'
+      "Access-Control-Allow-Origin": "*"
     },
     body: JSON.stringify({
       authUrl: authUrl,
@@ -86,8 +84,8 @@ module.exports.getAccessToken = async (event) => {
       return {
         statusCode: 200,
         headers: {
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Credentials": "true"
+          "Access-Control-Allow-Origin": "*"
+
         },
         body: JSON.stringify(token),
       };
