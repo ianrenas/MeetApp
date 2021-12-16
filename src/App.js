@@ -23,7 +23,7 @@ class App extends Component {
     });
   }
 
-  updateEvents = async (location) => {
+  updateEvents = async (location, numberOfEvents = null) => {
     getEvents().then((events) => {
       const locationEvents = (location === 'all') ?
         events :
