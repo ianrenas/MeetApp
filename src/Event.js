@@ -16,7 +16,7 @@ class Event extends Component {
     const { event } = this.props;
     const { collapsed } = this.state;
     return (
-      <div className="Event">
+      <div className="event">
         <h2 className="summary">{event.summary}</h2>
         <p className="start-date">{event.start.dateTime} ({event.start.timeZone})</p>
         <br />
@@ -26,14 +26,14 @@ class Event extends Component {
           <div className={`extra-details ${this.state.collapsed ? "hide" : "show"}`}>
             <h3>About Event</h3>
             <a href={event.htmlLink} role="noopener" target="_blank">
-              See deatails on Google calendar
+              See details on Google calendar
             </a>
             <p className="event-description">{event.description}</p>
 
           </div>
         }
         <button className={`${collapsed ? "show" : "hide"}-details-btn`} onClick={this.handleClick}>
-          {collapsed ? "show Details" : "Hide Details"}
+          {collapsed ? "Show Details" : "Hide Details"}
         </button>
       </div>
     );
