@@ -10,12 +10,12 @@ class App extends Component {
   state = {
     events: [],
     locations: [],
-    currentLocation: "all",
+    currentLocation: 'all',
     numberOfEvents: 32
   }
+
   async componentDidMount() {
     this.mounted = true;
-
     getEvents().then((events) => {
       if (this.mounted) {
         this.setState({ events, locations: extractLocations(events) });
@@ -23,7 +23,8 @@ class App extends Component {
     });
   }
 
-  updateEvents = async (location, numberOfEvents = null) => {
+
+  updateEvents = async (location) => {
     getEvents().then((events) => {
       const locationEvents = (location === 'all') ?
         events :
@@ -34,13 +35,15 @@ class App extends Component {
       });
     });
   }
-  updateEventCount = async (e) => {
-    const newVal = e.target.value;
+
+  updateNumberOfEvents = (eventCount) => {
+    const { currentLocation } = this.state;
     this.setState({
-      numberOfEvents: newVal,
+      numberOfEvents: eventCount
     });
-    this.updateEvents(this.state.currentLocation, this.state.numberOfEvents);
-  };
+    this.updateEvents(currentLocation, eventCount);
+  }
+
   componentWillUnmount() {
     this.mounted = false;
   }
@@ -50,8 +53,9 @@ class App extends Component {
     return (
       <div className="App">
         <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
-        <NumberOfEvents numberOfEvents={numberOfEvents}
-          updateEventCount={this.updateEventCount} />
+        <NumberOfEvents
+          numberOfEvents={this.state.numberOfEvents}
+          updateNumberOfEvents={this.updateNumberOfEvents} />
         <EventList events={this.state.events} />
 
       </div>
