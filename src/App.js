@@ -49,7 +49,7 @@ class App extends Component {
   }
 
   render() {
-    const { numberOfEvents } = this.state;
+
     return (
       <div className="App">
         <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
