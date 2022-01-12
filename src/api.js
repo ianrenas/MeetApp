@@ -17,7 +17,7 @@ export const extractLocations = (events) => {
   return locations;
 };
 
-const checkToken = async (accessToken) => {
+export const checkToken = async (accessToken) => {
   /**
    * Send access token to google API server
    * If the token is valid, get a json response
