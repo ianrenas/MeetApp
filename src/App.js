@@ -9,6 +9,7 @@ import { InfoAlert } from './Alert';
 import WelcomeScreen from './WelcomeScreen';
 
 
+
 class App extends Component {
   state = {
     events: [],
@@ -29,7 +30,7 @@ class App extends Component {
     if ((code || isTokenValid) && this.mounted) {
       getEvents().then((events) => {
         if (this.mounted) {
-          this.setState({ events, locations: extractLocations(events) });
+          this.setState({ events: events.slice(0, this.state.numberOfEvents), locations: extractLocations(events) });
         }
       });
     }

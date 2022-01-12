@@ -3,7 +3,7 @@
   width: 100%;
   height: 100%;
   top: 0;
-  background: white;
+  background: lightskyblue;
   }
   .login-button {
   color: #494949;
@@ -55,6 +55,7 @@
   background-color: #4285f4;
   width: 80%;
   height: 100%;
-  text-align: center;
+  text-align: right;
   }
+  
   
