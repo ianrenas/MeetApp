@@ -13,6 +13,7 @@ import {
 
 
 
+
 class App extends Component {
   state = {
     events: [],
@@ -89,7 +90,7 @@ class App extends Component {
 
 
         <ScatterChart
-          width={400}
+          width={800}
           height={400}
           margin={{
             top: 20, right: 20, bottom: 20, left: 20
