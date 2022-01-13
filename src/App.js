@@ -39,6 +39,10 @@ class App extends Component {
     }
   }
 
+  componentWillUnmount() {
+    this.mounted = false;
+  }
+
 
   updateEvents = async (location) => {
     getEvents().then((events) => {
@@ -70,9 +74,7 @@ class App extends Component {
     return data;
   };
 
-  componentWillUnmount() {
-    this.mounted = false;
-  }
+
 
   render() {
     if (this.state.showWelcomeScreen === undefined) return <div className="App" />
@@ -85,15 +87,16 @@ class App extends Component {
           numberOfEvents={this.state.numberOfEvents}
           updateNumberOfEvents={this.updateNumberOfEvents} />
 
+
         <ScatterChart
           width={400}
           height={400}
           margin={{
-            top: 20, right: 20, bottom: 20, left: 20,
+            top: 20, right: 20, bottom: 20, left: 20
           }}>
           <CartesianGrid />
-          <XAxis type="number" dataKey="x" name="stature" unit="cm" />
-          <YAxis type="number" dataKey="y" name="weight" unit="kg" />
+          <XAxis type="category" dataKey="city" name="city" />
+          <YAxis type="number" dataKey="number" name="number of events" />
           <Tooltip cursor={{ strokeDasharray: '3 3' }} />
           <Scatter data={this.getData()} fill="#8884d8" />
         </ScatterChart>
