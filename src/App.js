@@ -10,6 +10,7 @@ import WelcomeScreen from './WelcomeScreen';
 import {
   ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
 } from 'recharts';
+import EventGenre from './EventGenre';
 
 
 
@@ -84,26 +85,26 @@ class App extends Component {
       <div className="App">
         {!navigator.onLine ? (<InfoAlert text='You are offline!' />) : (<InfoAlert text=' ' />)}
         <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
-
         <NumberOfEvents
           numberOfEvents={this.state.numberOfEvents}
-          updateNumberOfEvents={this.updateNumberOfEvents} />
-
-        <ResponsiveContainer height={400} >
-          <ScatterChart
-            margin={{
-              top: 20, right: 20, bottom: 20, left: 20
-            }}>
-            <CartesianGrid />
-            <XAxis type="category" dataKey="city" name="city" />
-            <YAxis type="number" dataKey="number" name="number of events" allowDecimals={false} />
-            <Tooltip cursor={{ strokeDasharray: '3 3' }} />
-            <Scatter data={this.getData()} fill="#8884d8" />
-          </ScatterChart>
-        </ResponsiveContainer>
-
+          updateNumberOfEvents={this.updateNumberOfEvents}
+        />
+        <div className="data-vis-wrapper">
+          <EventGenre events={events} />
+          <ResponsiveContainer height={400} >
+            <ScatterChart
+              margin={{
+                top: 20, right: 20, bottom: 20, left: 20
+              }}>
+              <CartesianGrid />
+              <XAxis type="category" dataKey="city" name="city" />
+              <YAxis type="number" dataKey="number" name="number of events" allowDecimals={false} />
+              <Tooltip cursor={{ strokeDasharray: '3 3' }} />
+              <Scatter data={this.getData()} fill="#8884d8" />
+            </ScatterChart>
+          </ResponsiveContainer>
+        </div>
         <EventList events={this.state.events} />
-
         <WelcomeScreen showWelcomeScreen={this.state.showWelcomeScreen}
           getAccessToken={() => { getAccessToken() }} />
       </div>
